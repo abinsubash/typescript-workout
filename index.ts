@@ -457,3 +457,75 @@
 
 //Optional tuples===================================================
 // let arr:[number,string,number?] =[3,"abin"]
+
+//Dependenty injection (tightly coupled)===============================
+
+// class dependend{
+//     postgres():void{
+//         console.log("postgres")
+//     }
+// }
+// class anotherOne{
+//     private dependency:dependend
+//     constructor(){
+//         this.dependency = new dependend()
+//     }
+//     connect():void{
+//         this.dependency.postgres()
+//         console.log("connected")
+//     }
+// }
+
+// const data =new anotherOne()
+// data.connect()
+// dependency Injection (loosly coupled)===========================================
+
+// interface method{
+//     connect():void
+// }
+// class mongo implements method{
+//     connect(): void {
+//         console.log("Mongoose connected")
+//     }
+// }
+// class postgres implements method{
+//      connect():void{
+//         console.log("postgres connected")
+//      }
+// }
+// class final{
+//     private dependency:method
+//     constructor(dependency:method){
+//         this.dependency= dependency
+//     }
+//     database(){
+//         this.dependency.connect()
+//         console.log("Connected")
+//     }
+// }
+// // const data =new final(new mongo())
+// const data = new final(new postgres())
+// data.database()
+
+
+// singleTone============================================
+
+// class single{
+//     private static instance:single
+//     private constructor(){}
+//     static getInstance():single{
+//         if(!single.instance){
+//             single.instance = new single()
+//         }
+//         return single.instance
+        
+//     }
+//     print():void{
+//         console.log("hello World")
+//     }
+// }
+
+// const data = single.getInstance()
+// data.print()
+
+// ================================================================================================================================================================================
